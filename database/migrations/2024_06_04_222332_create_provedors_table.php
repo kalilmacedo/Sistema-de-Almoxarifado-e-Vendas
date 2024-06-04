@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_roles', function (Blueprint $table) {
-            $table->id();
+        Schema::create('provedores', function (Blueprint $table) {
+            $table->id('provedor_id');
+            $table->string('nome');
+            $table->string('contato');
+            $table->foreignId('user_id')->references('user_id')->on('users');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('provedors');
     }
 };
